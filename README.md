@@ -20,7 +20,7 @@ Only `/plans` is replaced with the approved LeadWoo pricing page in:
 ## Deployment
 
 Every push to `main` runs `.github/workflows/pages.yml`, prepares the GitHub
-Pages artifact, and deploys it.
+Pages artifact, and deploys it. GitHub Pages is configured to use GitHub Actions.
 
 ## Editing
 
