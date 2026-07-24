@@ -16,7 +16,7 @@ curl --fail --location --silent --show-error "${upstream}/favicon.svg" -o "${out
 
 # Keep the original application intact while teaching its router that GitHub
 # Pages serves this repository below /leadwoo-website.
-perl -0pi -e 's#n\.jsxs\(Jbe,\{children:#n.jsxs(Jbe,{basename:"/leadwoo-website",children:#g' "${output_dir}/assets/index.js"
+perl -0pi -e 's#n\.jsx\(wye,\{children:#n.jsx(wye,{basename:"/leadwoo-website",children:#g' "${output_dir}/assets/index.js"
 
 # Serve the mirrored assets from the GitHub Pages project path.
 perl -0pi -e 's#src="/assets/index-xoRJ665e\.js"#src="/leadwoo-website/assets/index.js"#g;
