@@ -1,7 +1,9 @@
 # LeadWoo Website – GitHub Pages
 
-This private repository publishes an editing copy of the current
+This public repository publishes an editing copy of the current
 `tryleadwoo.com` marketing website through GitHub Pages.
+
+Website: https://junaitmallick123.github.io/leadwoo-website/
 
 ## What is preserved
 
