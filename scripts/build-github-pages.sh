@@ -31,6 +31,19 @@ perl -0pi -e 's#(["(])(/assets/)#$1https://tryleadwoo.com$2#g;
 
 cp "${output_dir}/index.html" "${output_dir}/404.html"
 cp "${site_root}/static/plans/index.html" "${output_dir}/plans/index.html"
+
+# Materialize every public marketing route so GitHub Pages serves a normal
+# 200 response instead of relying on its platform-level 404 fallback.
+routes=(
+  about articles customer_support_agent digital_marketing email-landingpage
+  linkedin-landingpage privacy signallanding termsandservice voice_agent
+  voicelandingpage website_builder whatsapp-landingpage whatsapp_agent
+)
+for route in "${routes[@]}"; do
+  mkdir -p "${output_dir}/${route}"
+  cp "${output_dir}/index.html" "${output_dir}/${route}/index.html"
+done
+
 touch "${output_dir}/.nojekyll"
 
 echo "GitHub Pages artifact prepared in ${output_dir}"
