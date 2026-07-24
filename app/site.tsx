@@ -83,7 +83,7 @@ const Check = () => <span className="tick"><FaCheck /></span>;
 function Header() {
   const [open, setOpen] = useState(false);
   return <header className="lw-header">
-    <a href="/" className="lw-logo"><img src="/leadwoo-logo.png" alt="LeadWoo" /></a>
+    <a href="/" className="lw-logo"><img src="/leadwoo-logo.png" alt="LeadWoo" onError={(event) => { event.currentTarget.style.display = "none"; event.currentTarget.nextElementSibling?.classList.add("show"); }} /><span>LeadWoo</span></a>
     <button className="menu-toggle" onClick={() => setOpen(!open)} aria-label="Open menu"><FaBars /></button>
     <nav className={open ? "open" : ""}>
       <div className="nav-group"><span>Products</span><div className="mega">
