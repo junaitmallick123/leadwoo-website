@@ -88,3 +88,8 @@
 @keyframes client-logo-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:760px){.client-showcase{padding:64px 0}.client-logo-card{width:165px;height:86px;padding:16px 20px}.logo-set{gap:12px;padding-right:12px}.logo-track{animation-duration:28s}}
 @media(prefers-reduced-motion:reduce){.logo-track{animation:none}.logo-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}}
+
+/* Keep every client logo centred safely inside its card */
+.client-logo-card{overflow:hidden}
+.client-logo-card img{width:auto!important;height:auto!important;max-width:100%!important;max-height:62px!important;object-fit:contain!important;object-position:center!important;margin:auto}
+@media(max-width:760px){.client-logo-card img{max-height:50px!important}}
