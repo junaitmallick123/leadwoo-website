@@ -172,3 +172,6 @@
 
 /* Homepage-matched navigation symbols */
 .menu-product-icon svg{width:20px;height:20px;display:block}.menu-product-icon.woo-mini{width:38px}.menu-product-icon.woo-mini svg{width:21px;height:21px}
+
+/* Keep the Woo badge legible during menu hover */
+.menu-product-icon.woo-mini svg rect,.product-dropdown a:hover .menu-product-icon.woo-mini svg rect{fill:var(--orange)!important}.menu-product-icon.woo-mini svg path,.product-dropdown a:hover .menu-product-icon.woo-mini svg path{stroke:#fff!important}
