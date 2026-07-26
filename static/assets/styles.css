@@ -26,7 +26,8 @@
 
 /* Consistent homepage product icon system */
 .showcase-tag{gap:8px}
-.showcase-tag .product-logo{width:19px;height:19px;display:block;flex:0 0 19px}
+.showcase-tag .product-logo{width:15px;height:15px;display:block;flex:0 0 15px}
 .showcase-tag span{line-height:1}
 .whatsapp-tag{background:#e4f8eb;color:#128c4a}
-.whatsapp-tag .whatsapp-logo{width:20px;height:20px;flex-basis:20px}
+.whatsapp-tag .whatsapp-logo{width:16px;height:16px;flex-basis:16px}
+\n.showcase-tag .woo-logo{width:16px;height:16px;flex-basis:16px}\n
