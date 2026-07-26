@@ -62,3 +62,6 @@
 .thread-composer{margin:0 16px 16px;background:#fff;border:1px solid #dddfe7;border-radius:11px;padding:11px;display:flex;align-items:center;justify-content:space-between;color:#a0a5af;font-size:8px}.thread-composer button{border:0;background:transparent;color:#6f7580}.thread-composer .send-reply{width:26px;height:26px;border-radius:50%;background:var(--orange);color:#fff}
 @media(max-width:1000px){.platform-story{grid-template-columns:1fr}.inbox-v2{max-width:780px;margin:auto}}
 @media(max-width:600px){.inbox-shell{grid-template-columns:1fr}.inbox-thread{display:none}.inbox-shell{min-height:480px}.conversation span{max-width:220px}}
+
+/* Static visibility safeguard: content remains visible if JavaScript is delayed or blocked */
+.reveal{opacity:1!important;transform:none!important}
