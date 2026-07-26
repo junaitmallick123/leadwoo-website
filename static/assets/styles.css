@@ -312,3 +312,6 @@
 .product-detail-hero:nth-of-type(1){background:radial-gradient(circle at 82% 20%,rgba(255,89,35,.27),transparent 23%),radial-gradient(circle at 12% 76%,rgba(94,91,255,.11),transparent 27%),linear-gradient(135deg,#171512,#211711 55%,#11100f)!important}
 @media(max-width:760px){.hero-v2,.product-hub-hero,.blog-editorial-hero,.about-hero-v2,.product-detail-hero{background:radial-gradient(circle at 70% 12%,rgba(255,89,35,.23),transparent 28%),linear-gradient(145deg,#171512,#211711 58%,#11100f)!important}.hero-v2:after,.product-hub-hero:after,.blog-editorial-hero:after,.about-hero-v2:after,.product-detail-hero:after{inset:-10%;animation-duration:15s}.product-hub-hero{padding-top:68px!important;padding-bottom:62px!important}}
 @media(prefers-reduced-motion:reduce){.hero-v2:after,.product-hub-hero:after,.blog-editorial-hero:after,.about-hero-v2:after,.product-detail-hero:after{animation:none!important}}
+
+/* Aurora homepage trust-row contrast */
+.hero-v2 .trust-proof,.hero-v2 .trust-proof small,.hero-v2 .trust-proof strong{color:#c9c2bb!important}.hero-v2 .trust-proof .rating-proof i{color:#ff6431!important}.hero-v2 .trust-proof svg{color:#ff7447!important}.hero-v2 .trust-proof>span{border-color:rgba(255,255,255,.16)!important}.hero-v2 .trust-proof>span+span:before{background:rgba(255,255,255,.18)!important}
