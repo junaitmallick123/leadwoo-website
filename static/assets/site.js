@@ -1,8 +1,6 @@
 document.querySelector('.mobile-toggle')?.addEventListener('click',()=>document.querySelector('.header')?.classList.toggle('open'));
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.querySelector('.contact-form')?.addEventListener('submit',event=>{event.preventDefault();const button=event.currentTarget.querySelector('button');button.textContent='Thank you — we will contact you';button.disabled=true});
-
 
 const typingProduct=document.querySelector('.typing-product');
 if(typingProduct&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
@@ -60,3 +58,31 @@ document.querySelectorAll('.product-menu').forEach((menu)=>{
     if(!menu.contains(event.relatedTarget)) closeMenu();
   });
 });
+
+const contactStage=document.querySelector('#contact-stage');
+if(contactStage&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  contactStage.addEventListener('pointermove',(event)=>{
+    const rect=contactStage.getBoundingClientRect();
+    contactStage.style.setProperty('--mx',((event.clientX-rect.left)/rect.width*100).toFixed(1)+'%');
+    contactStage.style.setProperty('--my',((event.clientY-rect.top)/rect.height*100).toFixed(1)+'%');
+  });
+}
+const contactForm=document.querySelector('.contact-form');
+const successModal=document.querySelector('#agent-success-modal');
+const closeSuccess=()=>{
+  if(!successModal)return;
+  successModal.hidden=true;
+  document.body.style.overflow='';
+};
+contactForm?.addEventListener('submit',(event)=>{
+  event.preventDefault();
+  if(!contactForm.checkValidity()){contactForm.reportValidity();return;}
+  if(successModal){
+    successModal.hidden=false;
+    document.body.style.overflow='hidden';
+    successModal.querySelector('[data-close-success]')?.focus();
+  }
+  contactForm.reset();
+});
+document.querySelectorAll('[data-close-success]').forEach(button=>button.addEventListener('click',closeSuccess));
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&successModal&&!successModal.hidden)closeSuccess()});
