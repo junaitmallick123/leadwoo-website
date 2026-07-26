@@ -102,3 +102,17 @@
 @media(max-width:1000px){.hero-typewriter{justify-content:center}}
 @media(max-width:760px){.hero-typewriter{font-size:15px;min-height:34px;margin-top:-6px}.hero-typewriter strong{min-width:185px;text-align:left}.hero-typewriter i{height:19px}}
 @media(prefers-reduced-motion:reduce){.hero-typewriter i{animation:none;opacity:1}}
+
+/* Hero trust signals */
+.trust-proof{gap:0;padding-top:18px;align-items:center}
+.trust-proof>span{min-height:32px;padding:0 18px;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.trust-proof>span:first-child{padding-left:0}
+.trust-proof>span+span{border-left:1px solid #ddd3c7}
+.trust-proof svg{width:22px;height:22px;flex:0 0 22px;color:var(--orange)}
+.trust-proof small{font-size:13px;color:#5f5851}
+.trust-proof strong{font-size:14px;color:var(--ink);font-weight:800}
+.trust-proof .rating-proof{gap:7px}
+.trust-proof .rating-proof i{font-style:normal;color:var(--orange);font-size:15px;letter-spacing:1px;line-height:1}
+.trust-proof .rating-proof small{font-size:13px}
+@media(max-width:1180px){.trust-proof{justify-content:center;flex-wrap:wrap;row-gap:14px}.trust-proof>span{padding:0 13px}}
+@media(max-width:620px){.trust-proof{align-items:stretch;flex-direction:column;gap:10px;border-top:0}.trust-proof>span{justify-content:center;min-height:26px;padding:0!important}.trust-proof>span+span{border-left:0}.trust-proof .rating-proof i{font-size:13px}.trust-proof small{font-size:12px}}
