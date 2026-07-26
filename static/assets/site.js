@@ -36,3 +36,27 @@ if(typingProduct&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches
   };
   window.setTimeout(typeNext,350);
 }
+
+
+document.querySelectorAll('.product-menu').forEach((menu)=>{
+  const trigger=menu.querySelector('.product-menu-trigger');
+  let closeTimer;
+  const openMenu=()=>{
+    window.clearTimeout(closeTimer);
+    menu.classList.add('menu-open');
+    trigger?.setAttribute('aria-expanded','true');
+  };
+  const closeMenu=()=>{
+    window.clearTimeout(closeTimer);
+    closeTimer=window.setTimeout(()=>{
+      menu.classList.remove('menu-open');
+      trigger?.setAttribute('aria-expanded','false');
+    },180);
+  };
+  menu.addEventListener('mouseenter',openMenu);
+  menu.addEventListener('mouseleave',closeMenu);
+  menu.addEventListener('focusin',openMenu);
+  menu.addEventListener('focusout',(event)=>{
+    if(!menu.contains(event.relatedTarget)) closeMenu();
+  });
+});
