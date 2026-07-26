@@ -180,3 +180,6 @@
 .menu-product-icon.email-mini{font-size:21px;line-height:1}
 .nav-links a.product-menu-trigger::after,.nav-links a.product-menu-trigger.active::after{content:"";position:static;left:auto;right:auto;bottom:auto;width:7px;height:7px;display:block;background:transparent;border:0;border-right:1.7px solid currentColor;border-bottom:1.7px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s ease;flex:0 0 auto}
 .product-menu:hover .product-menu-trigger::after,.product-menu:focus-within .product-menu-trigger::after,.product-menu.menu-open .product-menu-trigger::after{transform:rotate(225deg) translate(-1px,-1px)}
+
+/* Full-size Email symbol, visually matched to WhatsApp */
+.menu-product-icon.email-mini{font-size:0}.menu-product-icon.email-mini svg{width:23px;height:23px;display:block}
