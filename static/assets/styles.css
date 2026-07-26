@@ -93,3 +93,12 @@
 .client-logo-card{overflow:hidden}
 .client-logo-card img{width:auto!important;height:auto!important;max-width:100%!important;max-height:62px!important;object-fit:contain!important;object-position:center!important;margin:auto}
 @media(max-width:760px){.client-logo-card img{max-height:50px!important}}
+
+/* Letter-by-letter product rotation in the homepage hero */
+.hero-typewriter{min-height:38px;margin:-8px 0 18px;display:flex;align-items:center;gap:9px;font-size:18px;color:#756d65}
+.hero-typewriter strong{display:inline-block;min-width:225px;color:var(--orange);font-weight:800}
+.hero-typewriter i{width:2px;height:23px;background:var(--orange);border-radius:2px;animation:typewriter-cursor .75s steps(1) infinite}
+@keyframes typewriter-cursor{0%,48%{opacity:1}49%,100%{opacity:0}}
+@media(max-width:1000px){.hero-typewriter{justify-content:center}}
+@media(max-width:760px){.hero-typewriter{font-size:15px;min-height:34px;margin-top:-6px}.hero-typewriter strong{min-width:185px;text-align:left}.hero-typewriter i{height:19px}}
+@media(prefers-reduced-motion:reduce){.hero-typewriter i{animation:none;opacity:1}}
