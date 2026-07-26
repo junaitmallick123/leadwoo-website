@@ -116,3 +116,23 @@
 .trust-proof .rating-proof small{font-size:13px}
 @media(max-width:1180px){.trust-proof{justify-content:center;flex-wrap:wrap;row-gap:14px}.trust-proof>span{padding:0 13px}}
 @media(max-width:620px){.trust-proof{align-items:stretch;flex-direction:column;gap:10px;border-top:0}.trust-proof>span{justify-content:center;min-height:26px;padding:0!important}.trust-proof>span+span{border-left:0}.trust-proof .rating-proof i{font-size:13px}.trust-proof small{font-size:12px}}
+
+/* LeadWoo brand-origin case section */
+.brand-case-section{padding:92px 0;background:var(--cream)}
+.brand-case-card{position:relative;overflow:hidden;display:grid;grid-template-columns:330px 1fr;gap:62px;align-items:center;padding:58px 68px;background:#15140f;color:#fff;border-radius:32px;box-shadow:0 30px 80px rgba(35,25,17,.13)}
+.brand-case-card:after{content:"";position:absolute;width:540px;height:540px;border-radius:50%;left:-280px;bottom:-360px;background:radial-gradient(circle,rgba(244,81,30,.28),transparent 68%);pointer-events:none}
+.attorney-visual{height:340px;position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:center}
+.attorney-glow{position:absolute;inset:30px 0 0;border-radius:27px;background:linear-gradient(145deg,#443124,#1c1915);box-shadow:0 22px 50px rgba(244,81,30,.13)}
+.attorney-visual img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.attorney-visual>span{position:absolute;z-index:2;bottom:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--orange);color:#fff;padding:10px 20px;border-radius:99px;font-size:13px;font-weight:800;box-shadow:0 10px 25px rgba(244,81,30,.25)}
+.brand-case-copy{position:relative;z-index:1}
+.brand-case-copy h2{font-size:clamp(46px,5vw,70px);line-height:1.02;margin:18px 0 22px;max-width:900px}
+.brand-case-copy h2 em{font-style:normal;color:var(--orange)}
+.brand-case-copy>p{max-width:850px;margin:0;color:#aaa39a;font-size:18px;line-height:1.65}
+.brand-case-copy .brand-origin{margin-top:20px;color:#8d867d;font-size:15px;font-style:italic}
+.brand-case-actions{display:flex;gap:13px;margin-top:30px}
+.brand-case-actions .btn{min-width:165px}
+.brand-outline{border-color:#625e57;color:#fff;background:transparent}
+.brand-outline:hover{border-color:#fff}
+@media(max-width:1000px){.brand-case-card{grid-template-columns:260px 1fr;gap:38px;padding:46px}.attorney-visual{height:300px}.brand-case-copy>p{font-size:16px}}
+@media(max-width:760px){.brand-case-section{padding:65px 0}.brand-case-card{grid-template-columns:1fr;padding:30px 24px 38px;border-radius:23px;gap:38px;text-align:center}.attorney-visual{height:270px;max-width:290px;width:100%;margin:auto}.brand-case-copy h2{font-size:43px}.brand-case-copy>p{font-size:15px}.brand-case-actions{flex-direction:column}.brand-case-actions .btn{width:100%}}
