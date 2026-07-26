@@ -68,7 +68,7 @@
 
 /* Correctly mapped compact inbox icons */
 .inbox-filters button{display:grid;place-items:center}
-.inbox-channel-icon{width:14px;height:14px;display:block}
-.conversation .inbox-channel-icon,.thread-head .inbox-channel-icon{width:15px;height:15px}
+.inbox-channel-icon{width:11px;height:11px;display:block}
+.conversation .inbox-channel-icon,.thread-head .inbox-channel-icon{width:12px;height:12px}
 .conversation i,.thread-head i{display:grid;place-items:center}
-.composer-icon{width:14px;height:14px;display:block}
+.composer-icon{width:11px;height:11px;display:block}
