@@ -315,3 +315,13 @@
 
 /* Aurora homepage trust-row contrast */
 .hero-v2 .trust-proof,.hero-v2 .trust-proof small,.hero-v2 .trust-proof strong{color:#c9c2bb!important}.hero-v2 .trust-proof .rating-proof i{color:#ff6431!important}.hero-v2 .trust-proof svg{color:#ff7447!important}.hero-v2 .trust-proof>span{border-color:rgba(255,255,255,.16)!important}.hero-v2 .trust-proof>span+span:before{background:rgba(255,255,255,.18)!important}
+
+/* Footer logo and pricing workflow icon corrections */
+.footer-pricing .footer-logo{align-items:center;background:#fffdf9;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:7px 11px;box-shadow:none;overflow:hidden}
+.footer-pricing .footer-logo img{display:block;width:auto;height:32px;max-width:190px;object-fit:contain}
+.growth-visual .channel-nodes b svg,.growth-visual .agent-nodes b svg{display:block;width:17px;height:17px}
+.growth-visual .channel-nodes .node-linkedin{background:#eaf3fb;color:#0a66c2}
+.growth-visual .channel-nodes .node-email{background:#fff0ed;color:#e5484d}
+.growth-visual .channel-nodes .node-whatsapp{background:#eafaf1;color:#20b65a}
+.growth-visual .agent-nodes .node-voice{background:#fff1e8;color:#ff5b2d}
+.growth-visual .agent-nodes .node-woo{background:#fff1e8;color:#ff5b2d}
