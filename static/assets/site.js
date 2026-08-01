@@ -59,6 +59,40 @@ document.querySelectorAll('.product-menu').forEach((menu)=>{
   });
 });
 
+document.querySelectorAll('[data-leadwoo-select]').forEach((root)=>{
+  const native=root.querySelector('select');
+  const trigger=root.querySelector('.leadwoo-select-trigger');
+  const label=trigger?.querySelector('span');
+  const menu=root.querySelector('.leadwoo-select-menu');
+  const options=[...(menu?.querySelectorAll('[role="option"]')||[])];
+  const close=()=>{root.classList.remove('is-open');menu.hidden=true;trigger.setAttribute('aria-expanded','false');};
+  const open=()=>{root.classList.add('is-open');menu.hidden=false;trigger.setAttribute('aria-expanded','true');(menu.querySelector('[aria-selected="true"]')||options[0])?.focus();};
+  trigger?.addEventListener('click',()=>root.classList.contains('is-open')?close():open());
+  options.forEach((option,index)=>{
+    option.addEventListener('click',()=>{
+      native.value=option.dataset.value;
+      label.textContent=option.textContent;
+      root.classList.add('has-value');
+      options.forEach(item=>item.setAttribute('aria-selected',String(item===option)));
+      native.dispatchEvent(new Event('change',{bubbles:true}));
+      close();trigger.focus();
+    });
+    option.addEventListener('keydown',(event)=>{
+      if(event.key==='ArrowDown'||event.key==='ArrowUp'){
+        event.preventDefault();
+        const delta=event.key==='ArrowDown'?1:-1;
+        options[(index+delta+options.length)%options.length].focus();
+      }
+      if(event.key==='Escape'){close();trigger.focus();}
+    });
+  });
+  document.addEventListener('pointerdown',(event)=>{if(!root.contains(event.target))close();});
+  root.closest('form')?.addEventListener('reset',()=>window.setTimeout(()=>{
+    label.textContent='Select a LeadWoo product';root.classList.remove('has-value');
+    options.forEach(item=>item.removeAttribute('aria-selected'));close();
+  },0));
+});
+
 const contactStage=document.querySelector('#contact-stage');
 if(contactStage&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   contactStage.addEventListener('pointermove',(event)=>{
