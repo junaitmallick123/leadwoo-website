@@ -291,7 +291,7 @@
 .footer.footer-pricing{padding:70px max(5vw,28px) 34px!important}
 
 
-/* LeadWoo Aurora visual system — shared across page heroes */
+/* LeadWoo Aurora visual system  -  shared across page heroes */
 .hero-v2,.product-hub-hero,.blog-editorial-hero,.about-hero-v2,.product-detail-hero{position:relative;overflow:hidden;isolation:isolate;color:#fff;background:radial-gradient(circle at 78% 18%,rgba(255,89,35,.28),transparent 24%),radial-gradient(circle at 10% 82%,rgba(94,91,255,.12),transparent 28%),linear-gradient(135deg,#171512,#211711 55%,#11100f)!important}
 .hero-v2:before,.product-hub-hero:before,.blog-editorial-hero:before,.about-hero-v2:before,.product-detail-hero:before{content:"";position:absolute;inset:0;z-index:-2;opacity:.14;background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent 95%)}
 .hero-v2:after,.product-hub-hero:after,.blog-editorial-hero:after,.about-hero-v2:after,.product-detail-hero:after{content:"";position:absolute;inset:-22%;z-index:-1;pointer-events:none;background:radial-gradient(circle at 14% 62%,rgba(244,81,30,.38),transparent 16%),radial-gradient(circle at 86% 30%,rgba(94,74,255,.20),transparent 18%),linear-gradient(112deg,transparent 35%,rgba(255,107,54,.14) 48%,transparent 60%);filter:blur(10px);animation:leadwooAuroraDrift 12s ease-in-out infinite alternate}
