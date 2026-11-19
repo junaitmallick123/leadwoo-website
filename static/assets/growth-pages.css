@@ -122,6 +122,17 @@
   background: #f8e5d8;
 }
 
+.suite-card-visual.geo-suite-visual {
+  background: #f8e5d8;
+}
+
+.suite-card-visual.geo-suite-visual img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
 .geo-screen-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -246,7 +257,7 @@
 .geo-pricing-inner > div { max-width: 690px; }
 .geo-pricing-inner .btn { flex-shrink: 0; }
 .service-label { font-weight: 700; }
-.plan-note { font-size: .9rem; }
+.geo-price-offer { max-width: 720px; }
 .pricing-terms { margin-top: 17px; font-size: .9rem; }
 
 @media (max-width: 990px) {
