@@ -107,6 +107,45 @@
     }
   }
 
+  const mediaFrames = document.querySelectorAll(
+    'main :is(.lw-hero-frame, .lw-product-media, .lw-origin-image, .suite-card-visual, .product-detail-visual, .geo-visual, .geo-screen, .founder-photo)'
+  );
+  for (const surface of mediaFrames) {
+    const image = surface.querySelector(':scope > img, :scope > a > img');
+    if (!image) continue;
+
+    surface.classList.add('lw-liquid-media');
+    image.classList.add('lw-liquid-image');
+    let frame = 0;
+    let position;
+
+    function moveGlass() {
+      frame = 0;
+      const bounds = surface.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+
+      const percentage = (offset, size) => `${Math.max(0, Math.min(100, offset / size * 100)).toFixed(1)}%`;
+      surface.style.setProperty('--lw-glass-x', percentage(position.clientX - bounds.left, bounds.width));
+      surface.style.setProperty('--lw-glass-y', percentage(position.clientY - bounds.top, bounds.height));
+      surface.setAttribute('data-lw-glass-active', '');
+    }
+
+    function clearGlass() {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+      surface.removeAttribute('data-lw-glass-active');
+    }
+
+    surface.addEventListener('pointermove', event => {
+      if (preferences.matches || event.pointerType === 'touch') return;
+      position = event;
+      if (!frame) frame = requestAnimationFrame(moveGlass);
+    }, { passive: true });
+    surface.addEventListener('pointerleave', clearGlass);
+    surface.addEventListener('pointercancel', clearGlass);
+    preferences.addEventListener('change', clearGlass);
+  }
+
   const showcase = document.querySelector('[data-logo-showcase]');
   if (!showcase) return;
   const controls = showcase.querySelector('.lw-logo-actions');
