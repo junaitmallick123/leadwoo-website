@@ -1,0 +1,275 @@
+.geo-page,
+.growth-pricing {
+  background: #f8f4ed;
+  color: #231a15;
+}
+
+.geo-hero {
+  padding: clamp(58px, 8vw, 112px) 0;
+  background:
+    radial-gradient(ellipse at 80% 12%, #4c261b 0, transparent 55%),
+    linear-gradient(130deg, #1a1513, #241915 70%, #1a1513);
+  color: #fff7ef;
+}
+
+.geo-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .85fr);
+  align-items: center;
+  gap: clamp(28px, 7vw, 100px);
+}
+
+.growth-kicker {
+  color: #ff9d7c;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.geo-hero h1 {
+  margin: 16px 0 21px;
+  font-size: clamp(3rem, 7.2vw, 6.1rem);
+  line-height: .98;
+  letter-spacing: -.055em;
+}
+
+.geo-hero h1 em {
+  color: #ff946d;
+  font-style: normal;
+}
+
+.geo-hero-copy > p:not(.growth-kicker),
+.pricing-intro > p:not(.growth-kicker) {
+  max-width: 38rem;
+  color: #e2cfc4;
+  line-height: 1.65;
+}
+
+.geo-hero-copy .geo-cta-note {
+  margin: 12px 0 0;
+  font-size: .88rem;
+}
+
+.growth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.geo-hero .btn-outline {
+  border-color: #a78373;
+  color: #fff7ef;
+}
+
+.geo-hero .btn-outline:hover {
+  background: #fff7ef;
+  color: #231a15;
+}
+
+.geo-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.geo-platforms span {
+  padding: 6px 9px;
+  border: 1px solid #775141;
+  border-radius: 8px;
+  background: #38251e;
+  color: #fff7ef;
+  font-size: .82rem;
+  font-weight: 650;
+}
+
+.geo-visual,
+.geo-screen {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(9px, 1.4vw, 14px);
+  border: 1px solid #e8d9cc;
+  border-radius: 18px;
+  background: #fff7ee;
+  color: #261a15;
+}
+
+.geo-visual { box-shadow: 0 22px 58px #100b0840; }
+
+.geo-visual img,
+.geo-screen img,
+.geo-teaser img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.geo-visual figcaption {
+  padding: 8px 4px 0;
+  color: #634c42;
+  font-size: .83rem;
+}
+
+.geo-teaser {
+  align-self: center;
+  padding: clamp(9px, 1.4vw, 14px);
+  border: 1px solid #edcfbd;
+  border-radius: 18px;
+  background: #f8e5d8;
+}
+
+.suite-card-visual.geo-suite-visual {
+  background: #f8e5d8;
+}
+
+.suite-card-visual.geo-suite-visual img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.geo-screen-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.geo-screen figcaption {
+  display: grid;
+  gap: 4px;
+  padding: 12px 4px 4px;
+}
+
+.geo-screen figcaption span { color: #635248; }
+
+.growth-section { padding-block: clamp(42px, 6.4vw, 80px); }
+
+.growth-heading {
+  max-width: 690px;
+  margin-bottom: 24px;
+}
+
+.growth-heading h2,
+.geo-pricing-inner h2 {
+  margin: 0 0 9px;
+  font-size: clamp(2rem, 4.2vw, 3.35rem);
+  letter-spacing: -.04em;
+  line-height: 1.06;
+}
+
+.growth-heading p,
+.growth-plan > p:not(.plan-price),
+.plan-add-on p:not(.plan-price),
+.geo-pricing-inner p,
+.pricing-terms {
+  color: #635248;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.growth-card-grid,
+.outreach-plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.outreach-plans { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.growth-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(16px, 2.2vw, 25px);
+  border: 1px solid #e8d9cc;
+  border-radius: 18px;
+  background: #fffcf8;
+}
+
+.growth-plan h3,
+.plan-add-on h3 {
+  margin: 0;
+  font-size: 1.34rem;
+  line-height: 1.2;
+}
+
+.growth-plan .btn {
+  margin-top: auto;
+  align-self: flex-start;
+  white-space: normal;
+  text-align: center;
+}
+
+.growth-plan ul {
+  padding-left: 1.15rem;
+  margin: 2px 0 8px;
+  line-height: 1.5;
+}
+
+.growth-plan li + li { margin-top: 7px; }
+.growth-plan li::marker { color: #a43c1b; }
+
+.plan-featured {
+  background: #fff2e9;
+  border-color: #e99b78;
+}
+
+.plan-price {
+  margin: 0;
+  font: 600 clamp(1.65rem, 2.8vw, 2.4rem)/1.05 Fraunces, Georgia, serif;
+}
+
+.plan-price small {
+  font: 500 .86rem/1.4 "Hanken Grotesk", sans-serif;
+  color: #695447;
+  white-space: nowrap;
+}
+
+.plan-add-on,
+.geo-pricing-inner {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plan-add-on {
+  margin-top: 16px;
+  padding: 19px 23px;
+  border: 1px solid #e8d9cc;
+  border-radius: 18px;
+}
+
+.plan-add-on .plan-price { flex-shrink: 0; }
+
+.growth-services,
+.geo-pricing-band {
+  background: #f1e7dc;
+  border-block: 1px solid #e7d9ce;
+}
+
+.geo-pricing-inner { padding-block: clamp(35px, 5vw, 66px); }
+.geo-pricing-inner > div { max-width: 690px; }
+.geo-pricing-inner .btn { flex-shrink: 0; }
+.service-label { font-weight: 700; }
+.geo-price-offer { max-width: 720px; }
+.pricing-terms { margin-top: 17px; font-size: .9rem; }
+
+@media (max-width: 990px) {
+  .outreach-plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .geo-hero-grid, .growth-card-grid, .geo-screen-grid { grid-template-columns: 1fr; }
+  .geo-pricing-inner { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 525px) {
+  .outreach-plans { grid-template-columns: 1fr; }
+  .plan-add-on { align-items: flex-start; flex-direction: column; }
+}
