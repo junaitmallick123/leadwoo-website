@@ -8,6 +8,13 @@ rm -rf "${output_dir}"
 mkdir -p "${output_dir}"
 cp -R "${site_root}/static/." "${output_dir}/"
 
+# Load the common navigation and footer effects wherever both are rendered.
+while IFS= read -r -d '' page; do
+  if grep -qi '<header[ >]' "$page" && grep -qi '<footer[ >]' "$page"; then
+    sed -i 's|</head>|<link rel="stylesheet" href="/leadwoo-website/assets/site-motion.css"><script src="/leadwoo-website/assets/site-motion.js" defer></script></head>|I' "$page"
+  fi
+done < <(find "${output_dir}" -name '*.html' -type f -print0)
+
 # GitHub Pages serves this file for any future route that has not yet been
 # materialized. The homepage is a safe, branded fallback.
 cp "${output_dir}/index.html" "${output_dir}/404.html"
