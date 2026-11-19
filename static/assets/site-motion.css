@@ -1,5 +1,51 @@
-.lw-motion-header { transition: box-shadow .3s ease, border-color .3s ease; }
-.lw-motion-header[data-scrolled] { box-shadow: 0 10px 32px #3b211619; border-bottom-color: #efc9b6; }
+.lw-motion-header {
+  background: linear-gradient(110deg, #ffffffa8, #ffead69c 71%, #fff9f0c7);
+  border-bottom: 1px solid #ffffffd9;
+  box-shadow: inset 0 1px #ffffffd9, 0 4px 22px #79422415;
+  backdrop-filter: blur(22px) saturate(155%);
+  -webkit-backdrop-filter: blur(22px) saturate(155%);
+  transition: box-shadow .32s ease, border-color .32s ease;
+}
+.lw-motion-header[data-scrolled] { box-shadow: inset 0 1px #fff, 0 12px 36px #3b211624; border-bottom-color: #efc9b6; }
+
+.lw-menu-highlight-ready { position: relative; isolation: isolate; }
+.lw-menu-highlight {
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto auto 0;
+  width: var(--lw-menu-width, 0px);
+  height: var(--lw-menu-height, 0px);
+  border: 1px solid #ffd2b8;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #fffdf9e8, #ffdbc5d9);
+  box-shadow: inset 0 1px #fff, 0 5px 15px #bb6a3924;
+  opacity: 0;
+  transform: translate(var(--lw-menu-x, 0px), var(--lw-menu-y, 0px));
+  pointer-events: none;
+  transition: transform .28s cubic-bezier(.2,.75,.23,1), width .28s ease, height .28s ease, opacity .14s ease;
+}
+.lw-menu-highlight[data-shown] { opacity: 1; }
+.lw-menu-highlight[data-positioning] { transition: none; }
+
+.lw-motion-header .product-dropdown {
+  background: linear-gradient(155deg, #fffdf9f7, #fff1e6ed);
+  border-color: #fff9f2;
+  box-shadow: 0 20px 50px #542d2130, inset 0 1px #fff;
+  backdrop-filter: blur(20px) saturate(145%);
+  -webkit-backdrop-filter: blur(20px) saturate(145%);
+}
+.lw-motion-header .product-dropdown > a {
+  border: 1px solid transparent;
+  transition: background .18s ease, border-color .18s ease, translate .2s ease;
+}
+.lw-motion-header .product-dropdown > a:is(:hover, :focus-visible) {
+  background: #ffffffb8;
+  border-color: #f0d8c8;
+  translate: 3px 0;
+}
+.lw-motion-header .product-menu-trigger::after { transition: transform .22s ease; }
+.lw-motion-header .product-menu:is(:hover, :focus-within, .menu-open) .product-menu-trigger::after { transform: translateY(2px) rotate(225deg); }
+
 
 .lw-header-progress {
   position: absolute;
@@ -110,11 +156,35 @@
 
 .lw-logo-showcase[data-mode="scroll"] .lw-logo-rail {
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  padding-block: 15px;
+  border-block: 1px solid #e9c6b466;
+  border-radius: 12px;
+  background:
+    linear-gradient(0deg, transparent 45%, #efd6c8b0 46%, #efd6c8b0 49%, transparent 50%) center / 100% 15px,
+    linear-gradient(100deg, #ffffff38, #fff9f4c9 50%, #ffffff38);
+  mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
 }
 .lw-logo-showcase[data-mode="scroll"] .lw-logo-track { display: flex; width: max-content; }
 .lw-logo-showcase[data-mode="scroll"] .lw-logos { display: flex; padding-right: var(--lw-logo-gap); }
-.lw-logo-showcase[data-mode="scroll"] .lw-logos li { width: clamp(132px, 15vw, 169px); flex: none; }
+.lw-logo-showcase[data-mode="scroll"] .lw-logos li {
+  width: clamp(102px, 11vw, 135px);
+  min-height: 54px;
+  padding: 7px 10px;
+  flex: none;
+  background: #fffaf4cd;
+  border-color: #fff;
+  transition: background .2s ease, box-shadow .2s ease;
+}
+.lw-logo-showcase[data-mode="scroll"] .lw-logos .lw-logo-on-dark { background: #29201c; border-color: #473933; }
+.lw-logo-showcase[data-mode="scroll"] .lw-logos img {
+  max-width: 108px;
+  height: 31px;
+  opacity: .88;
+  transform: scale(var(--lw-logo-zoom, 1));
+  transition: transform .19s cubic-bezier(.2,.75,.25,1), opacity .16s ease;
+}
+.lw-logo-showcase[data-mode="scroll"] .lw-logos li[data-near] img { opacity: 1; }
+.lw-logo-showcase[data-mode="scroll"] .lw-logos li:hover { box-shadow: inset 0 1px #fff9, 0 5px 14px #7d48232b; }
 .lw-logo-showcase[data-mode="scroll"] .lw-logo-track { animation: lw-logo-drift 38s linear infinite paused; }
 .lw-logo-showcase[data-mode="scroll"] .lw-logo-rail + .lw-logo-rail .lw-logo-track { animation-duration: 43s; animation-direction: reverse; }
 .lw-logo-showcase[data-mode="scroll"][data-visible] .lw-logo-track { animation-play-state: running; }
@@ -128,6 +198,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .lw-header-progress { display: none; }
+  .lw-menu-highlight,
+  .lw-motion-header .product-menu-trigger::after,
+  .lw-motion-header .product-dropdown,
+  .lw-motion-header .product-dropdown > a { transition: none; }
+  .lw-motion-header .product-dropdown > a:is(:hover, :focus-visible) { translate: none; }
   .lw-motion-header,
   .lw-motion-header :is(.brand, .nav-actions .btn),
   .lw-motion-footer :is(.footer-logo, .social a) { transition: none; }

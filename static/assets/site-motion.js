@@ -30,6 +30,64 @@
     window.addEventListener('resize', scheduleHeader, { passive: true });
     preferences.addEventListener('change', scheduleHeader);
     updateHeader();
+
+    const navigation = header.querySelector('.nav-links');
+    if (navigation) {
+      const links = [...navigation.querySelectorAll(':scope > a, :scope > .product-menu > a')];
+      const current = links.find(link => link.matches('.active, [aria-current="page"]'));
+      const pill = document.createElement('span');
+      pill.className = 'lw-menu-highlight';
+      pill.setAttribute('aria-hidden', 'true');
+      navigation.classList.add('lw-menu-highlight-ready');
+      navigation.prepend(pill);
+
+      let hovered;
+      let focused;
+      function highlight() {
+        const link = hovered || focused || current;
+        if (!link || !navigation.getClientRects().length) {
+          pill.removeAttribute('data-shown');
+          return;
+        }
+        const frame = navigation.getBoundingClientRect();
+        const bounds = link.getBoundingClientRect();
+        if (!pill.hasAttribute('data-shown')) {
+          pill.setAttribute('data-positioning', '');
+          requestAnimationFrame(() => pill.removeAttribute('data-positioning'));
+        }
+        pill.style.setProperty('--lw-menu-x', `${bounds.left - frame.left - 9}px`);
+        pill.style.setProperty('--lw-menu-y', `${bounds.top - frame.top - 6}px`);
+        pill.style.setProperty('--lw-menu-width', `${bounds.width + 18}px`);
+        pill.style.setProperty('--lw-menu-height', `${bounds.height + 12}px`);
+        pill.setAttribute('data-shown', '');
+      }
+
+      for (const link of links) {
+        const target = link.closest('.product-menu') || link;
+        target.addEventListener('pointerenter', event => {
+          if (event.pointerType === 'touch') return;
+          hovered = link;
+          highlight();
+        });
+        target.addEventListener('pointerleave', () => {
+          hovered = undefined;
+          highlight();
+        });
+        target.addEventListener('focusin', () => {
+          focused = link;
+          highlight();
+        });
+        target.addEventListener('focusout', event => {
+          if (target.contains(event.relatedTarget)) return;
+          focused = undefined;
+          highlight();
+        });
+      }
+      window.addEventListener('resize', highlight, { passive: true });
+      header.querySelector('.mobile-toggle')?.addEventListener('click', () => requestAnimationFrame(highlight));
+      document.fonts?.ready.then(highlight);
+      highlight();
+    }
   }
 
   if (footer) {
@@ -59,6 +117,41 @@
     duplicate.classList.add('lw-logo-clone');
     duplicate.setAttribute('aria-hidden', 'true');
     track.append(duplicate);
+  }
+
+  for (const rail of showcase.querySelectorAll('.lw-logo-rail')) {
+    const logos = [...rail.querySelectorAll('li')];
+    let frame = 0;
+    let cursorX;
+    function magnify() {
+      frame = 0;
+      const scales = logos.map(logo => {
+        const box = logo.getBoundingClientRect();
+        const distance = Math.abs(box.left + box.width / 2 - cursorX);
+        return 1 + .52 * Math.pow(Math.max(0, 1 - distance / 145), 1.5);
+      });
+      logos.forEach((logo, index) => {
+        logo.style.setProperty('--lw-logo-zoom', scales[index].toFixed(3));
+        logo.toggleAttribute('data-near', scales[index] > 1.08);
+      });
+    }
+
+    function clearMagnification() {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+      for (const logo of logos) {
+        logo.style.removeProperty('--lw-logo-zoom');
+        logo.removeAttribute('data-near');
+      }
+    }
+    rail.addEventListener('pointermove', event => {
+      if (event.pointerType === 'touch' || preferences.matches || showcase.dataset.mode !== 'scroll') return;
+      cursorX = event.clientX;
+      if (!frame) frame = requestAnimationFrame(magnify);
+    }, { passive: true });
+    rail.addEventListener('pointerleave', clearMagnification);
+    preferences.addEventListener('change', clearMagnification);
+    expand.addEventListener('click', clearMagnification);
   }
 
   let expanded = false;
