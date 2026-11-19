@@ -112,18 +112,52 @@
 @keyframes lw-footer-sheen { to { transform: translateX(350%); } }
 @keyframes lw-footer-arrival { from { transform: translateY(7px); opacity: .75; } }
 
+/* A single opening sequence keeps the hero lively without looping behind the copy. */
 .lw-home .lw-hero-frame {
   background:
-    linear-gradient(115deg, #fff0 24%, #ffffff1c 49%, #fff0 74%) 120% 0 / 260% 100%,
+    linear-gradient(115deg, #fff0 27%, #ffffff26 50%, #fff0 73%) 115% 0 / 230% 100%,
     linear-gradient(140deg, #fff3, #fff1);
-  animation: lw-hero-sheen 1.45s ease-out both;
 }
 
-@media (min-width: 851px) {
-  .lw-home .lw-hero-frame { animation: lw-enter .7s .1s ease-out both, lw-hero-sheen 1.45s .15s ease-out both; }
+@media (prefers-reduced-motion: no-preference) {
+  .lw-home .lw-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(112deg, transparent 29%, #ffb27c1c 43%, #ffc69a35 50%, transparent 67%) -100% 0 / 210% 100% no-repeat;
+    animation: lw-hero-light-pass 2.1s ease-out both;
+  }
+  .lw-home .lw-hero-copy { animation: none; }
+  .lw-home .lw-hero-copy > * {
+    animation: lw-hero-copy-arrival .68s cubic-bezier(.2,.74,.2,1) both;
+  }
+  .lw-home .lw-hero-copy > :nth-child(2) { animation-delay: 75ms; }
+  .lw-home .lw-hero-copy > :nth-child(3) { animation-delay: 150ms; }
+  .lw-home .lw-hero-copy > :nth-child(4) { animation-delay: 210ms; }
+  .lw-home .lw-hero-copy > :nth-child(5) { animation-delay: 270ms; }
+
+  .lw-home .lw-hero-frame {
+    animation: lw-hero-dashboard-arrival .95s .12s cubic-bezier(.2,.74,.2,1) both,
+               lw-hero-sheen 1.7s .28s ease-out both;
+  }
 }
 
-@keyframes lw-hero-sheen { to { background-position: -90% 0, 0 0; } }
+@keyframes lw-hero-copy-arrival {
+  from { opacity: .63; transform: translateY(13px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes lw-hero-dashboard-arrival {
+  from { opacity: .74; transform: translateY(16px) scale(.975); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes lw-hero-light-pass {
+  0% { opacity: 0; background-position: 105% 0; }
+  25% { opacity: .95; }
+  100% { opacity: 0; background-position: -25% 0; }
+}
+@keyframes lw-hero-sheen { to { background-position: -30% 0, 0 0; } }
 
 .lw-home .lw-logo-showcase { --lw-logo-gap: 12px; }
 .lw-logo-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px 28px; flex-wrap: wrap; margin-bottom: 18px; }
