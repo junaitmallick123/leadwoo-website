@@ -171,7 +171,8 @@
 @media(max-width:820px){.product-menu{height:auto}.product-menu::after{display:none}.product-dropdown{pointer-events:auto;transform:none}}
 
 /* Homepage-matched navigation symbols */
-.menu-product-icon svg{width:20px;height:20px;display:block}.menu-product-icon.woo-mini{width:38px}.menu-product-icon.woo-mini svg{width:21px;height:21px}
+.menu-product-icon svg{width:20px;height:20px;display:block}.menu-product-icon.woo-mini{width:38px}.menu-product-icon.woo-mini svg,.menu-product-icon.geo-mini svg{width:21px;height:21px}
+.menu-product-icon.geo-mini{border-color:#ffdac6}
 
 /* Keep the Woo badge legible during menu hover */
 .menu-product-icon.woo-mini svg rect,.product-dropdown a:hover .menu-product-icon.woo-mini svg rect{fill:var(--orange)!important}.menu-product-icon.woo-mini svg path,.product-dropdown a:hover .menu-product-icon.woo-mini svg path{stroke:#fff!important}

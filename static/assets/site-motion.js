@@ -104,7 +104,7 @@
       ['geo', 'GEO', '<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.75"/><ellipse cx="10.5" cy="10.5" rx="3" ry="6.75"/><path d="M4 10.5h13m-1.7 5.1 4.2 4.2M19 2.5v4m-2-2h4"/></g>'],
     ];
     const cursorStage = document.createElement('div');
-    cursorStage.className = 'lw-footer-cursors';
+    cursorStage.className = 'lw-footer-brand';
     cursorStage.setAttribute('aria-hidden', 'true');
     const pointer = '<svg class="lw-footer-pointer" viewBox="0 0 26 28"><path d="M3 2.8 23 14.9l-9.1 1.7-4.5 8.2z" fill="currentColor" stroke="#fff5" stroke-width="1.2" stroke-linejoin="round"/></svg>';
     cursorStage.innerHTML = channels.map(([channel, label, mark]) => `
