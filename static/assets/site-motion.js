@@ -3,6 +3,21 @@
   const header = document.querySelector('body header');
   const footer = Array.from(document.querySelectorAll('body footer')).at(-1);
 
+  const mascotTargets = document.querySelectorAll(
+    'header .nav-actions > a[href="https://app.tryleadwoo.com/"], a.btn-primary[href], button.contact-submit[type="submit"] > span'
+  );
+  for (const target of mascotTargets) {
+    const mascot = document.createElement('img');
+    mascot.className = 'lw-cta-mascot';
+    mascot.width = 145;
+    mascot.height = 148;
+    mascot.alt = '';
+    mascot.setAttribute('aria-hidden', 'true');
+    mascot.decoding = 'async';
+    mascot.src = '/leadwoo-website/assets/pricing-mascot.webp';
+    target.prepend(mascot);
+  }
+
   if (header) {
     header.classList.add('lw-motion-header');
     const progress = document.createElement('span');
