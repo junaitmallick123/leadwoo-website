@@ -96,6 +96,33 @@
     accent.className = 'lw-footer-accent';
     accent.setAttribute('aria-hidden', 'true');
     footer.prepend(accent);
+
+    const channels = [
+      ['linkedin', 'LinkedIn', '<rect width="24" height="24" rx="4" fill="#0a66c2"/><path fill="#fff" d="M5 9h3v10H5zm1.5-4.5a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4zM10 9h3v1.4a3.3 3.3 0 0 1 6 1.9V19h-3v-5.6c0-1-.4-1.6-1.3-1.6-1 0-1.7.7-1.7 1.8V19h-3z"/>'],
+      ['gmail', 'Gmail', '<path fill="#4285f4" d="M1 7l4 3v10H2a1 1 0 0 1-1-1z"/><path fill="#34a853" d="M19 10l4-3v12a1 1 0 0 1-1 1h-3z"/><path fill="#ea4335" d="M5 5l7 5.3L19 5v5l-7 5.3L5 10z"/><path fill="#c5221f" d="M1 5.4a1.7 1.7 0 0 1 2.7-1.3L5 5v5L1 7z"/><path fill="#fbbc04" d="m19 5 1.3-.9A1.7 1.7 0 0 1 23 5.4V7l-4 3z"/>'],
+      ['whatsapp', 'WhatsApp', '<path fill="#128650" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.4-.2-2.3.6.6-2.2-.2-.4A8 8 0 1 1 12 20Z"/><path fill="#128650" d="M9.6 7.3c-.2-.4-.4-.4-.6-.4h-.6c-.3 0-.7.4-.9.8-.8 1.3-.3 2.8.6 4.1 1.7 2.5 4 3.8 6.6 4.1 1 .1 2-.5 2.3-1.3.2-.6.1-1-.3-1.2l-2-1c-.3-.1-.5-.1-.7.2l-.7.9c-.1.2-.3.2-.5.1-1.4-.6-2.4-1.5-3.1-2.8-.1-.2-.1-.3 0-.5l.6-.7c.1-.2.2-.4.1-.6Z"/>'],
+      ['geo', 'GEO', '<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.75"/><ellipse cx="10.5" cy="10.5" rx="3" ry="6.75"/><path d="M4 10.5h13m-1.7 5.1 4.2 4.2M19 2.5v4m-2-2h4"/></g>'],
+    ];
+    const cursorStage = document.createElement('div');
+    cursorStage.className = 'lw-footer-cursors';
+    cursorStage.setAttribute('aria-hidden', 'true');
+    const pointer = '<svg class="lw-footer-pointer" viewBox="0 0 26 28"><path d="M3 2.8 23 14.9l-9.1 1.7-4.5 8.2z" fill="currentColor" stroke="#fff5" stroke-width="1.2" stroke-linejoin="round"/></svg>';
+    cursorStage.innerHTML = channels.map(([channel, label, mark]) => `
+      <span class="lw-footer-cursor lw-footer-cursor--${channel}">
+        ${pointer}
+        <span class="lw-footer-cursor-chip">
+          <svg viewBox="0 0 24 24">${mark}</svg>
+          ${label}
+        </span>
+      </span>`).join('');
+    (footer.querySelector('.footer-shell') || footer).append(cursorStage);
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([entry]) => {
+        cursorStage.toggleAttribute('data-visible', entry.isIntersecting);
+      }, { threshold: 0.15 }).observe(cursorStage);
+    }
+
     if (!preferences.matches && 'IntersectionObserver' in window) {
       const reveal = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting && !preferences.matches) {
