@@ -22,7 +22,6 @@
 .pricing-hero .btn-outline:hover { background: #fff2; color: #fff7ef; }
 
 .pricing-art {
-  --pricing-object: clamp(142px, 19vw, 270px);
   position: relative;
   display: grid;
   place-items: center;
@@ -48,50 +47,28 @@
   pointer-events: none;
 }
 
-.pricing-glass-stack {
+.pricing-monitor {
+  width: min(85%, 360px);
   position: relative;
   z-index: 1;
-  width: var(--pricing-object);
-  aspect-ratio: 1;
-  transform-style: preserve-3d;
-  transform: rotateX(15deg) rotateY(-25deg) rotateZ(-12deg);
+  padding: 7px;
+  border: 1px solid #e9ad86;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #945f47, #402820 52%, #aa7354);
+  box-shadow: 2px 3px #764732, 4px 6px #4a2a20, 6px 9px #35201a, 8px 24px 34px #10060366;
+  transform: rotateX(12deg) rotateY(-17deg) rotateZ(-3deg);
 }
 
-.pricing-glass-sheet {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  border: 1px solid #ffba9680;
-  border-radius: 24%;
-  background: linear-gradient(154deg, #ffd7bd53, #ec7d3c16 54%, #ff9b5f4d);
-  box-shadow: inset 0 1px 2px #fff2e4a1, inset 0 -1px 2px #fa8f5077, 0 14px 38px #14060351;
-}
-
-.pricing-glass-sheet--back {
-  transform: translate3d(15%, -10%, -75px);
-  background: linear-gradient(145deg, #fca56c52, #f47a2a31 64%, #ffab6766);
-}
-
-.pricing-glass-sheet--middle {
-  transform: translate3d(3%, 2%, -34px);
-  background: linear-gradient(151deg, #ffe6cd80, #ff9d4933 65%, #f1794cab);
-}
-
-.pricing-glass-sheet--front {
-  transform: translate3d(-9%, 13%, 15px);
-  border-color: #fff3d9ad;
-  background:
-    linear-gradient(128deg, transparent 35%, #ffedde57 48%, transparent 63%) 90% 50% / 200% 100% no-repeat,
-    linear-gradient(145deg, #ffefe1a8, #ffd7b952 47%, #ff9a4d7a);
-}
-
-.pricing-glass-sheet img {
+.pricing-monitor svg {
   display: block;
-  width: 44%;
-  height: auto;
-  filter: drop-shadow(0 9px 15px #451d18a6);
-  transform: rotateZ(8deg);
+  width: 100%;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at 60% 80%, #563322, #22191a 75%);
+}
+
+.pricing-pulse {
+  stroke-dasharray: 14 86;
+  filter: drop-shadow(0 0 3px #ff934a);
 }
 
 .growth-pricing :is(#plans, #growth-services) { scroll-margin-top: 86px; }
@@ -159,7 +136,6 @@
   .geo-plans { grid-template-columns: 1fr; }
   .pricing-hero-grid { grid-template-columns: minmax(0, 1fr); }
   .pricing-art {
-    --pricing-object: clamp(108px, 26vw, 162px);
     min-height: clamp(142px, 35vw, 190px);
     width: min(100%, 410px);
     justify-self: center;
@@ -171,8 +147,8 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .pricing-glass-stack { animation: pricing-glass-settle 3.3s cubic-bezier(.22,.7,.25,1) both; }
-  .pricing-glass-sheet--front { animation: pricing-glass-light 2.1s .24s ease-out both; }
+  .pricing-pulse { animation: pricing-signal 4s linear infinite; }
+  .pricing-monitor { animation: pricing-float 7s ease-in-out infinite alternate; }
   @media (hover: hover) and (pointer: fine) {
     .growth-pricing .outreach-plans .growth-plan {
       transition: transform .24s cubic-bezier(.18,.68,.25,1), box-shadow .24s ease, border-color .24s ease;
@@ -185,15 +161,12 @@
   }
 }
 
-@keyframes pricing-glass-settle {
-  0% { transform: translateY(15px) rotateX(28deg) rotateY(-39deg) rotateZ(-18deg); }
-  57% { transform: translateY(-6px) rotateX(10deg) rotateY(-20deg) rotateZ(-9deg); }
-  100% { transform: rotateX(15deg) rotateY(-25deg) rotateZ(-12deg); }
+@keyframes pricing-signal {
+  to { stroke-dashoffset: -100; }
 }
 
-@keyframes pricing-glass-light {
-  from { background-position: 8% 50%, 0 0; }
-  to { background-position: 90% 50%, 0 0; }
+@keyframes pricing-float {
+  to { transform: translateY(-5px) rotateX(8deg) rotateY(-11deg) rotateZ(-2deg); }
 }
 
 .outreach-plans > .growth-plan[id] { scroll-margin-top: 90px; }
