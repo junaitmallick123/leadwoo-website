@@ -160,22 +160,8 @@
 @keyframes lw-hero-sheen { to { background-position: -30% 0, 0 0; } }
 
 .lw-home .lw-logo-showcase { --lw-logo-gap: 12px; }
-.lw-logo-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px 28px; flex-wrap: wrap; margin-bottom: 18px; }
+.lw-logo-heading { margin-bottom: 18px; }
 .lw-logo-showcase .lw-logo-heading h2 { text-align: left; }
-.lw-logo-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.lw-logo-actions[hidden] { display: none; }
-.lw-logo-actions button {
-  min-height: 40px;
-  padding: 6px 13px;
-  color: #6d3123;
-  border: 1px solid #ddc0ae;
-  border-radius: 999px;
-  background: #fff9f3;
-  font: 650 .83rem/1.2 'Hanken Grotesk', sans-serif;
-  cursor: pointer;
-}
-.lw-logo-actions button:focus-visible { outline: 2px solid #ac3f21; outline-offset: 3px; }
-.lw-logo-actions button:hover { background: #ffede0; }
 .lw-logo-showcase .lw-logos { margin: 0; gap: var(--lw-logo-gap); }
 .lw-logo-showcase .lw-logos li {
   min-height: 78px;
@@ -222,10 +208,16 @@
 .lw-logo-showcase[data-mode="scroll"] .lw-logo-track { animation: lw-logo-drift 38s linear infinite paused; }
 .lw-logo-showcase[data-mode="scroll"] .lw-logo-rail + .lw-logo-rail .lw-logo-track { animation-duration: 43s; animation-direction: reverse; }
 .lw-logo-showcase[data-mode="scroll"][data-visible] .lw-logo-track { animation-play-state: running; }
-.lw-logo-showcase[data-mode="scroll"][data-paused] .lw-logo-track { animation-play-state: paused; }
 @media (hover: hover) {
   .lw-logo-showcase[data-mode="scroll"] .lw-logo-rail:hover .lw-logo-track { animation-play-state: paused; }
 }
+.lw-logo-rail:focus-visible { outline: 2px solid #ac3f21; outline-offset: 3px; }
+.lw-logo-showcase[data-mode="scroll"] .lw-logo-rail:focus-visible {
+  overflow-x: auto;
+  mask-image: none;
+}
+.lw-logo-showcase[data-mode="scroll"] .lw-logo-rail:focus-visible .lw-logo-track { animation: none; }
+.lw-logo-showcase[data-mode="scroll"] .lw-logo-rail:focus-visible .lw-logo-clone,
 .lw-logo-showcase[data-mode="grid"] .lw-logo-clone { display: none; }
 
 @keyframes lw-logo-drift { to { transform: translateX(-50%); } }

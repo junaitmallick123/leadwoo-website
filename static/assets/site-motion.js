@@ -148,9 +148,6 @@
 
   const showcase = document.querySelector('[data-logo-showcase]');
   if (!showcase) return;
-  const controls = showcase.querySelector('.lw-logo-actions');
-  const pause = showcase.querySelector('[data-logo-pause]');
-  const expand = showcase.querySelector('[data-logo-expand]');
   for (const track of showcase.querySelectorAll('.lw-logo-track')) {
     const duplicate = track.querySelector('ul').cloneNode(true);
     duplicate.classList.add('lw-logo-clone');
@@ -190,23 +187,11 @@
     }, { passive: true });
     rail.addEventListener('pointerleave', clearMagnification);
     preferences.addEventListener('change', clearMagnification);
-    expand.addEventListener('click', clearMagnification);
   }
 
-  let expanded = false;
-  let paused = false;
   function updateShowcase() {
-    const scrolling = !preferences.matches && !expanded;
-    showcase.dataset.mode = scrolling ? 'scroll' : 'grid';
-    showcase.toggleAttribute('data-paused', paused);
-    controls.hidden = preferences.matches;
-    pause.hidden = !scrolling;
-    pause.textContent = paused ? 'Play logos' : 'Pause logos';
-    expand.textContent = expanded ? 'Show scrolling logos' : 'Show all logos';
-    expand.setAttribute('aria-expanded', String(!scrolling));
+    showcase.dataset.mode = preferences.matches ? 'grid' : 'scroll';
   }
-  pause.addEventListener('click', () => { paused = !paused; updateShowcase(); });
-  expand.addEventListener('click', () => { expanded = !expanded; updateShowcase(); });
   preferences.addEventListener('change', updateShowcase);
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
