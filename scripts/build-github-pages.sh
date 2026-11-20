@@ -7,6 +7,7 @@ output_dir="${site_root}/dist"
 rm -rf "${output_dir}"
 mkdir -p "${output_dir}"
 cp -R "${site_root}/static/." "${output_dir}/"
+python3 "${site_root}/scripts/order-header-navigation.py" "${output_dir}"
 
 # Keep markup and motion assets in sync across deploys and browser caches.
 motion_hash="$(cat "${output_dir}/assets/site-motion.css" "${output_dir}/assets/site-motion.js" | sha256sum | cut -c1-16)"
