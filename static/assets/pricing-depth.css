@@ -23,8 +23,8 @@
 
 .pricing-art {
   position: relative;
-  min-height: clamp(230px, 27vw, 350px);
-  perspective: 670px;
+  min-height: clamp(250px, 29vw, 375px);
+  perspective: 950px;
   background: radial-gradient(ellipse, #ff78385c, transparent 67%);
 }
 .pricing-hero::before {
@@ -48,19 +48,19 @@
   position: absolute;
   inset: 0;
   margin: auto;
-  width: min(87%, 183px);
+  width: min(65%, 310px);
   aspect-ratio: 1;
   height: auto; bottom: auto; top: 50%; translate: 0 -50%;
   border: 1px solid #ffae7f99;
   border-radius: 25px;
-  background: #ff711418;
+  background: linear-gradient(135deg, #ffd0a632, #ff711411 50%, #ffa16d25);
   box-shadow: 0 0 30px #ff723470, inset 0 0 18px #ff81443a;
   transform: translateZ(var(--z));
 }
 .pricing-orbit > .pricing-tile {
   display: grid;
   place-items: center;
-  width: min(44%, 97px);
+  width: min(35%, 167px);
   background: linear-gradient(145deg, #ffe0c6, #ff9863 72%, #e96634);
   box-shadow: 0 0 45px #ff702d85, inset 0 0 23px #ffcf995c;
 }
@@ -134,7 +134,7 @@
   .geo-plans { grid-template-columns: 1fr; }
   .pricing-hero-grid { grid-template-columns: minmax(0, 1fr); }
   .pricing-art {
-    min-height: 220px;
+    min-height: clamp(235px, 70vw, 310px);
     width: min(100%, 410px);
     justify-self: center;
   }
