@@ -15,9 +15,11 @@ for extension in css js; do
   cp "${output_dir}/assets/site-motion.${extension}" "${output_dir}/assets/site-motion.${motion_hash}.${extension}"
 done
 
-# Apply the LeadWoo shield to all pages and load the shared motion effects.
+# Normalize site-wide links and assets, then load the shared motion effects.
 while IFS= read -r -d '' page; do
-  sed -E -i 's|<link rel="icon"[^>]*>||Ig; s|</head>|<link rel="icon" type="image/png" sizes="64x64" href="/leadwoo-website/assets/leadwoo-favicon.png"></head>|I' "$page"
+  sed -E -i \
+    -e 's|href="https://www\.linkedin\.com/company/getleadwoo/"|href="https://www.linkedin.com/company/leadwoo/"|g' \
+    -e 's|<link rel="icon"[^>]*>||Ig; s|</head>|<link rel="icon" type="image/png" sizes="64x64" href="/leadwoo-website/assets/leadwoo-favicon.png"></head>|I' "$page"
   if grep -qi '<header[ >]' "$page" && grep -qi '<footer[ >]' "$page"; then
     sed -i "s|</head>|<link rel=\"stylesheet\" href=\"/leadwoo-website/assets/site-motion.${motion_hash}.css\"><script src=\"/leadwoo-website/assets/site-motion.${motion_hash}.js\" defer></script></head>|I" "$page"
   fi
