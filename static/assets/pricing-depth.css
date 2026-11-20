@@ -173,3 +173,98 @@
   from { background-position: 8% 50%, 0 0; }
   to { background-position: 90% 50%, 0 0; }
 }
+
+.outreach-plans > .growth-plan[id] { scroll-margin-top: 90px; }
+
+.growth-pricing .outreach-plans .growth-plan[data-guide-target] {
+  border-color: #ad542f;
+  box-shadow: 0 0 0 2px #d2764d47, 0 12px 34px #83432224;
+}
+
+.pricing-plan-guide {
+  display: grid;
+  grid-template-columns: 49px minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+  min-height: 54px;
+  margin-top: auto;
+}
+
+.pricing-plan-guide a {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  color: #78351e;
+  font-size: .88rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-underline-offset: 3px;
+}
+
+.pricing-plan-guide a:hover { text-decoration: underline; }
+.pricing-plan-guide a:focus-visible { outline: 2px solid #a94423; outline-offset: 3px; }
+
+.pricing-plan-guide a span {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border: solid currentColor;
+  border-width: 1.5px 1.5px 0 0;
+  transform: rotate(45deg);
+}
+
+.growth-pricing .outreach-plans .pricing-plan-guide + .btn { margin-top: 0; }
+
+.pricing-mascot {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  width: 49px;
+  pointer-events: none;
+}
+
+.pricing-mascot img { display: block; width: 100%; height: auto; }
+.pricing-mascot::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  width: 2px;
+  height: 5px;
+  border-radius: 2px;
+  box-shadow: 0 0 #c1562f, 4px 3px #e48b57;
+  opacity: 0;
+  transform: rotate(32deg);
+}
+
+@media (min-width: 526px) and (max-width: 990px) {
+  #quarterly-plan .pricing-plan-guide a span { transform: rotate(180deg); }
+}
+
+@media (max-width: 525px) {
+  .pricing-plan-guide a span { transform: rotate(135deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pricing-mascot img {
+    transform-origin: 50% 88%;
+    animation: pricing-mascot-chuckle .66s ease-out both;
+  }
+  .pricing-mascot::after { animation: pricing-mascot-sparks .66s ease-out both; }
+}
+
+@keyframes pricing-mascot-chuckle {
+  0% { transform: translateY(4px) rotate(-8deg) scale(.82); opacity: .45; }
+  28% { transform: translateY(-6px) rotate(-9deg) scale(1.06); opacity: 1; }
+  48% { transform: translateY(0) rotate(4deg) scale(.96); }
+  68% { transform: translateY(-3px) rotate(-3deg); }
+  100% { transform: none; opacity: 1; }
+}
+
+@keyframes pricing-mascot-sparks {
+  32%, 58% { opacity: .9; }
+  100% { opacity: 0; }
+}
