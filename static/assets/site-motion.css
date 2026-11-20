@@ -112,19 +112,22 @@
 @keyframes lw-footer-sheen { to { transform: translateX(350%); } }
 @keyframes lw-footer-arrival { from { transform: translateY(7px); opacity: .75; } }
 
-.lw-footer-cursors {
+.lw-footer-brand {
   position: relative;
   container-type: inline-size;
+  isolation: isolate;
   max-width: 80rem;
-  height: 9.5rem;
-  margin: clamp(24px, 4vw, 46px) auto 0;
-  overflow: hidden;
-  border: 1px solid #ffd6bf26;
-  border-radius: 22px;
-  background:
-    radial-gradient(ellipse at 50% 100%, #f8733b28, transparent 74%),
-    radial-gradient(circle, #ffddc437 1px, transparent 1.4px) 50% 50% / 19px 19px,
-    #201914;
+  height: clamp(10rem, 23vw, 20rem);
+  margin: clamp(18px, 3.4vw, 38px) auto 0;
+}
+
+.lw-footer-brand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(173deg, #fff2df 26%, #e9ac87 63%, #b96d48 82%);
+  mask: url("/leadwoo-website/assets/leadwoo-footer-wordmark.png") center / 98% auto no-repeat;
+  pointer-events: none;
 }
 
 .lw-footer-cursor {
@@ -137,7 +140,7 @@
   animation: lw-footer-roam var(--duration) var(--phase) ease-in-out infinite paused;
 }
 
-.lw-footer-cursors[data-visible] .lw-footer-cursor { animation-play-state: running; }
+.lw-footer-brand[data-visible] .lw-footer-cursor { animation-play-state: running; }
 .lw-footer-pointer {
   position: absolute;
   top: -17px;
@@ -162,10 +165,10 @@
 }
 
 .lw-footer-cursor-chip svg { flex: none; width: 17px; height: 17px; }
-.lw-footer-cursor--linkedin { --x: 14%; --y: 59%; --dx: 7cqw; --dy: -23px; --duration: 12s; --phase: -1s; --cursor-color: #66a9ff; --glow: #4289ff40; }
-.lw-footer-cursor--gmail { --x: 37%; --y: 39%; --dx: 6cqw; --dy: 23px; --duration: 14s; --phase: -4s; --cursor-color: #ff866e; --glow: #ff695440; }
-.lw-footer-cursor--whatsapp { --x: 62%; --y: 62%; --dx: -6cqw; --dy: -21px; --duration: 13s; --phase: -7s; --cursor-color: #64d79b; --glow: #39bb7540; }
-.lw-footer-cursor--geo { --x: 86%; --y: 42%; --dx: -8cqw; --dy: 24px; --duration: 15s; --phase: -9s; --cursor-color: #ffc181; --glow: #ff9f5c45; }
+.lw-footer-cursor--linkedin { --x: 13%; --y: 66%; --dx: 9cqw; --dy: -6cqw; --duration: 12s; --phase: -1s; --cursor-color: #66a9ff; --glow: #4289ff40; }
+.lw-footer-cursor--gmail { --x: 35%; --y: 36%; --dx: 8cqw; --dy: 5cqw; --duration: 14s; --phase: -4s; --cursor-color: #ff866e; --glow: #ff695440; }
+.lw-footer-cursor--whatsapp { --x: 64%; --y: 70%; --dx: -7cqw; --dy: -5cqw; --duration: 13s; --phase: -7s; --cursor-color: #64d79b; --glow: #39bb7540; }
+.lw-footer-cursor--geo { --x: 90%; --y: 33%; --dx: -9cqw; --dy: 6cqw; --duration: 15s; --phase: -9s; --cursor-color: #ffc181; --glow: #ff9f5c45; }
 .lw-footer-cursor--geo .lw-footer-cursor-chip svg { color: #b4471b; }
 
 @keyframes lw-footer-roam {
@@ -175,14 +178,10 @@
 }
 
 @media (max-width: 680px) {
-  .lw-footer-cursor--linkedin { --x: 25%; --y: 33%; --dx: 5cqw; --dy: -10px; }
-  .lw-footer-cursor--gmail { --x: 72%; --y: 33%; --dx: -6cqw; --dy: 9px; }
-  .lw-footer-cursor--whatsapp { --x: 26%; --y: 74%; --dx: 5cqw; --dy: 10px; }
-  .lw-footer-cursor--geo { --x: 73%; --y: 74%; --dx: -6cqw; --dy: -11px; }
-}
-
-@media (hover: hover) {
-  .lw-footer-cursors[data-visible]:hover .lw-footer-cursor { animation-play-state: paused; }
+  .lw-footer-cursor--linkedin { --x: 24%; --y: 24%; --dx: 7cqw; --dy: 11px; }
+  .lw-footer-cursor--gmail { --x: 74%; --y: 26%; --dx: -6cqw; --dy: 10px; }
+  .lw-footer-cursor--whatsapp { --x: 26%; --y: 80%; --dx: 7cqw; --dy: -10px; }
+  .lw-footer-cursor--geo { --x: 77%; --y: 79%; --dx: -7cqw; --dy: -10px; }
 }
 
 /* A single opening sequence keeps the hero lively without looping behind the copy. */
