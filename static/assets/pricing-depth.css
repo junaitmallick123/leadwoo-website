@@ -23,52 +23,50 @@
 
 .pricing-art {
   position: relative;
+  min-height: clamp(230px, 27vw, 350px);
+  perspective: 670px;
+  background: radial-gradient(ellipse, #ff78385c, transparent 67%);
+}
+.pricing-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, #ab633323 1px, transparent 1px),
+              linear-gradient(#ab633323 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(90deg, transparent 26%, black);
+}
+.pricing-orbit {
+  position: absolute;
+  inset: 12px 4px;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--pitch, 47deg)) rotateY(var(--yaw, -12deg)) rotateZ(-29deg);
+}
+.pricing-orbit > span {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: min(87%, 183px);
+  aspect-ratio: 1;
+  height: auto; bottom: auto; top: 50%; translate: 0 -50%;
+  border: 1px solid #ffae7f99;
+  border-radius: 25px;
+  background: #ff711418;
+  box-shadow: 0 0 30px #ff723470, inset 0 0 18px #ff81443a;
+  transform: translateZ(var(--z));
+}
+.pricing-orbit > .pricing-tile {
   display: grid;
   place-items: center;
-  min-height: clamp(234px, 32vw, 420px);
-  perspective: 900px;
+  width: min(44%, 97px);
+  background: linear-gradient(145deg, #ffe0c6, #ff9863 72%, #e96634);
+  box-shadow: 0 0 45px #ff702d85, inset 0 0 23px #ffcf995c;
 }
-
-.pricing-art::before {
-  content: "";
-  position: absolute;
-  inset: 7% -9% 2%;
-  background: radial-gradient(circle, #ffbb8e66 1px, transparent 1.4px) center / 16px 16px;
-  mask-image: radial-gradient(ellipse, #000 25%, transparent 71%);
-  pointer-events: none;
-}
-
-.pricing-art::after {
-  content: "";
-  position: absolute;
-  inset: 72% 10% -15%;
-  background: radial-gradient(ellipse, #ff691e59, transparent 65%);
-  transform: rotate(-9deg);
-  pointer-events: none;
-}
-
-.pricing-monitor {
-  width: min(85%, 360px);
-  position: relative;
-  z-index: 1;
-  padding: 7px;
-  border: 1px solid #e9ad86;
-  border-radius: 18px;
-  background: linear-gradient(145deg, #945f47, #402820 52%, #aa7354);
-  box-shadow: 2px 3px #764732, 4px 6px #4a2a20, 6px 9px #35201a, 8px 24px 34px #10060366;
-  transform: rotateX(12deg) rotateY(-17deg) rotateZ(-3deg);
-}
-
-.pricing-monitor svg {
-  display: block;
-  width: 100%;
-  border-radius: 12px;
-  background: radial-gradient(ellipse at 60% 80%, #563322, #22191a 75%);
-}
-
-.pricing-pulse {
-  stroke-dasharray: 14 86;
-  filter: drop-shadow(0 0 3px #ff934a);
+.pricing-tile img { width: 76%; height: auto; filter: drop-shadow(0 2px 4px #561c0d91); }
+@media (prefers-reduced-motion: no-preference) {
+  .pricing-orbit { transition: transform .22s ease-out; }
 }
 
 .growth-pricing :is(#plans, #growth-services) { scroll-margin-top: 86px; }
@@ -136,7 +134,7 @@
   .geo-plans { grid-template-columns: 1fr; }
   .pricing-hero-grid { grid-template-columns: minmax(0, 1fr); }
   .pricing-art {
-    min-height: clamp(142px, 35vw, 190px);
+    min-height: 220px;
     width: min(100%, 410px);
     justify-self: center;
   }
@@ -147,8 +145,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .pricing-pulse { animation: pricing-signal 4s linear infinite; }
-  .pricing-monitor { animation: pricing-float 7s ease-in-out infinite alternate; }
   @media (hover: hover) and (pointer: fine) {
     .growth-pricing .outreach-plans .growth-plan {
       transition: transform .24s cubic-bezier(.18,.68,.25,1), box-shadow .24s ease, border-color .24s ease;
@@ -159,14 +155,6 @@
       box-shadow: 0 16px 38px #83432228, inset 0 1px #fff;
     }
   }
-}
-
-@keyframes pricing-signal {
-  to { stroke-dashoffset: -100; }
-}
-
-@keyframes pricing-float {
-  to { transform: translateY(-5px) rotateX(8deg) rotateY(-11deg) rotateZ(-2deg); }
 }
 
 .outreach-plans > .growth-plan[id] { scroll-margin-top: 90px; }
