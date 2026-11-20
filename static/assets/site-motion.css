@@ -112,6 +112,79 @@
 @keyframes lw-footer-sheen { to { transform: translateX(350%); } }
 @keyframes lw-footer-arrival { from { transform: translateY(7px); opacity: .75; } }
 
+.lw-footer-cursors {
+  position: relative;
+  container-type: inline-size;
+  max-width: 80rem;
+  height: 9.5rem;
+  margin: clamp(24px, 4vw, 46px) auto 0;
+  overflow: hidden;
+  border: 1px solid #ffd6bf26;
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 50% 100%, #f8733b28, transparent 74%),
+    radial-gradient(circle, #ffddc437 1px, transparent 1.4px) 50% 50% / 19px 19px,
+    #201914;
+}
+
+.lw-footer-cursor {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  color: var(--cursor-color);
+  pointer-events: none;
+  animation: lw-footer-roam var(--duration) var(--phase) ease-in-out infinite paused;
+}
+
+.lw-footer-cursors[data-visible] .lw-footer-cursor { animation-play-state: running; }
+.lw-footer-pointer {
+  position: absolute;
+  top: -17px;
+  left: -10px;
+  width: 22px;
+  height: 24px;
+  filter: drop-shadow(0 2px 4px #150a06a6);
+}
+
+.lw-footer-cursor-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px 7px 8px;
+  border: 1px solid #fff9;
+  border-radius: 9px;
+  color: #2a1d18;
+  background: #fef4ed;
+  box-shadow: 0 6px 18px #14090470, 0 0 13px var(--glow);
+  font: 700 .75rem/1.2 system-ui, sans-serif;
+  white-space: nowrap;
+}
+
+.lw-footer-cursor-chip svg { flex: none; width: 17px; height: 17px; }
+.lw-footer-cursor--linkedin { --x: 14%; --y: 59%; --dx: 7cqw; --dy: -23px; --duration: 12s; --phase: -1s; --cursor-color: #66a9ff; --glow: #4289ff40; }
+.lw-footer-cursor--gmail { --x: 37%; --y: 39%; --dx: 6cqw; --dy: 23px; --duration: 14s; --phase: -4s; --cursor-color: #ff866e; --glow: #ff695440; }
+.lw-footer-cursor--whatsapp { --x: 62%; --y: 62%; --dx: -6cqw; --dy: -21px; --duration: 13s; --phase: -7s; --cursor-color: #64d79b; --glow: #39bb7540; }
+.lw-footer-cursor--geo { --x: 86%; --y: 42%; --dx: -8cqw; --dy: 24px; --duration: 15s; --phase: -9s; --cursor-color: #ffc181; --glow: #ff9f5c45; }
+.lw-footer-cursor--geo .lw-footer-cursor-chip svg { color: #b4471b; }
+
+@keyframes lw-footer-roam {
+  28% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(-4deg); }
+  58% { transform: translate(calc(-50% + var(--dx) * .28), calc(-50% + var(--dy) * -.55)) rotate(3deg); }
+  82% { transform: translate(calc(-50% - var(--dx) * .3), calc(-50% + var(--dy) * .35)) rotate(-2deg); }
+}
+
+@media (max-width: 680px) {
+  .lw-footer-cursor--linkedin { --x: 25%; --y: 33%; --dx: 5cqw; --dy: -10px; }
+  .lw-footer-cursor--gmail { --x: 72%; --y: 33%; --dx: -6cqw; --dy: 9px; }
+  .lw-footer-cursor--whatsapp { --x: 26%; --y: 74%; --dx: 5cqw; --dy: 10px; }
+  .lw-footer-cursor--geo { --x: 73%; --y: 74%; --dx: -6cqw; --dy: -11px; }
+}
+
+@media (hover: hover) {
+  .lw-footer-cursors[data-visible]:hover .lw-footer-cursor { animation-play-state: paused; }
+}
+
 /* A single opening sequence keeps the hero lively without looping behind the copy. */
 .lw-home .lw-hero-frame {
   background:
@@ -237,6 +310,7 @@
   .lw-motion-header :is(.brand, .nav-actions .btn):is(:hover, :focus-visible),
   .lw-motion-footer :is(.footer-logo, .social a):is(:hover, :focus-visible) { transform: none; }
   .lw-motion-footer.lw-in-view :is(.footer-grid > div, .footer-base, div[class*="max-w-7xl"] > div),
+  .lw-footer-cursor,
   .lw-home .lw-hero-frame,
   .lw-logo-showcase .lw-logo-track { animation: none; }
   .lw-motion-footer.lw-in-view .lw-footer-accent::after { animation: none; }
