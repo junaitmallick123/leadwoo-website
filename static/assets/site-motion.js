@@ -135,7 +135,7 @@
   }
 
   const mediaFrames = document.querySelectorAll(
-    'main :is(.lw-hero-frame, .lw-product-media, .lw-origin-image, .suite-card-visual, .product-detail-visual, .geo-visual, .geo-screen, .founder-photo)'
+    'main :is(.lw-hero-frame, .lw-product-media, .lw-origin-image, .suite-card-visual, .product-detail-visual, .lw-product-shot, .geo-visual, .geo-screen, .founder-photo)'
   );
   for (const surface of mediaFrames) {
     const image = surface.querySelector(':scope > img, :scope > a > img');
