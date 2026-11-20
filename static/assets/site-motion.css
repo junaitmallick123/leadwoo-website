@@ -207,8 +207,8 @@
 }
 .lw-logo-showcase[data-mode="scroll"] .lw-logos li[data-near] img { opacity: 1; }
 .lw-logo-showcase[data-mode="scroll"] .lw-logos li:hover { box-shadow: inset 0 1px #fff9, 0 5px 14px #7d48232b; }
-.lw-logo-showcase[data-mode="scroll"] .lw-logo-track { animation: lw-logo-drift 25s ease-in-out infinite alternate paused; }
-.lw-logo-showcase[data-mode="scroll"] .lw-logo-rail + .lw-logo-rail .lw-logo-track { animation-duration: 28s; animation-direction: alternate-reverse; }
+.lw-logo-showcase[data-mode="scroll"] .lw-logo-track { animation: lw-logo-drift 19s ease-in-out infinite alternate paused; }
+.lw-logo-showcase[data-mode="scroll"] .lw-logo-rail + .lw-logo-rail .lw-logo-track { animation-duration: 21s; animation-direction: alternate-reverse; }
 .lw-logo-showcase[data-mode="scroll"][data-visible] .lw-logo-track { animation-play-state: running; }
 @media (hover: hover) {
   .lw-logo-showcase[data-mode="scroll"] .lw-logo-rail:hover .lw-logo-track { animation-play-state: paused; }
