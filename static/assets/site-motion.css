@@ -117,7 +117,7 @@
   container-type: inline-size;
   isolation: isolate;
   max-width: 80rem;
-  height: clamp(10rem, 23vw, 20rem);
+  height: clamp(10rem, 16vw, 14rem);
   margin: clamp(18px, 3.4vw, 38px) auto 0;
 }
 
@@ -125,8 +125,10 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(173deg, #fff2df 26%, #e9ac87 63%, #b96d48 82%);
-  mask: url("/leadwoo-website/assets/leadwoo-footer-wordmark.png") center / 98% auto no-repeat;
+  background:
+    radial-gradient(ellipse at 50% 100%, #f8733b21, transparent 76%),
+    radial-gradient(circle, #ff985d69 1px, transparent 1.4px) center / 19px 19px;
+  mask-image: linear-gradient(transparent, #000 17%, #000 83%, transparent);
   pointer-events: none;
 }
 
@@ -165,10 +167,10 @@
 }
 
 .lw-footer-cursor-chip svg { flex: none; width: 17px; height: 17px; }
-.lw-footer-cursor--linkedin { --x: 13%; --y: 66%; --dx: 9cqw; --dy: -6cqw; --duration: 12s; --phase: -1s; --cursor-color: #66a9ff; --glow: #4289ff40; }
-.lw-footer-cursor--gmail { --x: 35%; --y: 36%; --dx: 8cqw; --dy: 5cqw; --duration: 14s; --phase: -4s; --cursor-color: #ff866e; --glow: #ff695440; }
-.lw-footer-cursor--whatsapp { --x: 64%; --y: 70%; --dx: -7cqw; --dy: -5cqw; --duration: 13s; --phase: -7s; --cursor-color: #64d79b; --glow: #39bb7540; }
-.lw-footer-cursor--geo { --x: 90%; --y: 33%; --dx: -9cqw; --dy: 6cqw; --duration: 15s; --phase: -9s; --cursor-color: #ffc181; --glow: #ff9f5c45; }
+.lw-footer-cursor--linkedin { --x: 13%; --y: 66%; --dx: 9cqw; --dy: -42px; --duration: 12s; --phase: -1s; --cursor-color: #66a9ff; --glow: #4289ff40; }
+.lw-footer-cursor--gmail { --x: 35%; --y: 36%; --dx: 8cqw; --dy: 32px; --duration: 14s; --phase: -4s; --cursor-color: #ff866e; --glow: #ff695440; }
+.lw-footer-cursor--whatsapp { --x: 64%; --y: 70%; --dx: -7cqw; --dy: -35px; --duration: 13s; --phase: -7s; --cursor-color: #64d79b; --glow: #39bb7540; }
+.lw-footer-cursor--geo { --x: 90%; --y: 33%; --dx: -9cqw; --dy: 40px; --duration: 15s; --phase: -9s; --cursor-color: #ffc181; --glow: #ff9f5c45; }
 .lw-footer-cursor--geo .lw-footer-cursor-chip svg { color: #b4471b; }
 
 @keyframes lw-footer-roam {
