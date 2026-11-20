@@ -234,3 +234,67 @@
   .about-film-camera, .about-film .founder-profile { transition: none; }
   .about-film .founder-profile:hover { transform: none; }
 }
+
+/* The four product links stay visible while the light travels outward. */
+.about-film-camera { scale: var(--about-sculpture-scale, .65); }
+.about-film-ring {
+  scale: var(--about-ring-scale, 1.13);
+  opacity: var(--about-ring-opacity, .72);
+}
+.about-film-paths {
+  position: absolute;
+  inset: 17% 18%;
+  z-index: -1;
+  pointer-events: none;
+  scale: var(--about-path-scale, 1);
+  opacity: var(--about-path-opacity, .84);
+  background:
+    linear-gradient(to bottom right, transparent calc(50% - 1px), #ffb080a8 50%, transparent calc(50% + 1px)),
+    linear-gradient(to bottom left, transparent calc(50% - 1px), #ffb080a8 50%, transparent calc(50% + 1px));
+  filter: drop-shadow(0 0 5px #ffc6939c);
+}
+.about-film-channels {
+  position: absolute;
+  inset: 10%;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+.about-film-channels li { justify-self: start; align-self: start; }
+.about-film-channels li:nth-child(even) { justify-self: end; }
+.about-film-channels li:nth-child(n+3) { align-self: end; }
+.about-film-channels a {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 6px clamp(9px, 2.4cqw, 16px);
+  border: 1px solid #ffe2ca65;
+  border-radius: 999px;
+  background: linear-gradient(160deg,#654134,#3b2522);
+  color: #fff5ed;
+  font-size: clamp(.78rem, 2.9cqw, .97rem);
+  font-weight: 750;
+  text-decoration: none;
+  box-shadow: inset 0 1px #ffffff35, 0 0 var(--about-channel-glow, 17px) #ff955035;
+}
+.about-film-channels a::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffb993;
+  box-shadow: 0 0 8px #ffa570;
+}
+.about-film-channels a:is(:hover, :focus-visible) { background: #754638; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-film-stage[data-about-led] .about-film-sculpture {
+    animation: none;
+    transform: rotateZ(-15deg) rotateY(var(--about-story-yaw, 62deg));
+  }
+}
