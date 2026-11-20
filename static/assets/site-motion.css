@@ -46,6 +46,67 @@
 .lw-motion-header .product-menu-trigger::after { transition: transform .22s ease; }
 .lw-motion-header .product-menu:is(:hover, :focus-within, .menu-open) .product-menu-trigger::after { transform: translateY(2px) rotate(225deg); }
 
+@media (min-width: 821px) {
+  .lw-motion-header .product-dropdown {
+    top: 61px;
+    left: -16px;
+    width: clamp(25rem, 56vw, 35rem);
+    gap: 5px;
+    padding: 11px;
+    border-radius: 16px;
+    border-color: #f2d6c4;
+    background: linear-gradient(150deg, #fffdfa, #fff2e8f5 85%);
+    box-shadow: 0 16px 38px #542d2126, 0 3px 10px #542d210f, inset 0 1px #fff;
+    transform-origin: 54px 0;
+    transform: translateY(-7px) scale(.975);
+    transition: opacity .14s ease, transform .18s ease, visibility 0s linear .18s;
+  }
+
+  .lw-motion-header .product-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 28px;
+    width: 52px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ef5b28, #ffac74);
+    pointer-events: none;
+  }
+
+  .lw-motion-header .product-menu:is(:hover, :focus-within, .menu-open) .product-dropdown {
+    transform: translateY(0) scale(1);
+    transition: opacity .17s ease-out, transform .26s cubic-bezier(.18,.76,.26,1), visibility 0s;
+  }
+
+  .lw-motion-header .product-dropdown > a { padding: 9px !important; }
+  .lw-motion-header .product-dropdown > a:is(:hover, :focus-visible) { translate: 0 -1px; }
+  .lw-motion-header .product-dropdown small { color: #71645b; font-size: .72rem; }
+  .lw-motion-header .product-dropdown .all-products-link {
+    margin-top: 2px;
+    padding: 9px 10px !important;
+    border: 1px solid #efd8c8;
+    border-radius: 9px;
+    background: #fff9f3;
+  }
+}
+
+@media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
+  .lw-motion-header .product-menu:is(:hover, .menu-open):not(:focus-within) .product-dropdown > a {
+    animation: lw-dropdown-arrival .2s ease-out both;
+  }
+  .lw-motion-header .product-menu:is(:hover, .menu-open):not(:focus-within) .product-dropdown > a:nth-child(n+3) {
+    animation-delay: 36ms;
+  }
+  .lw-motion-header .product-menu:is(:hover, .menu-open):not(:focus-within) .product-dropdown > .all-products-link {
+    animation-delay: 60ms;
+  }
+}
+
+@keyframes lw-dropdown-arrival {
+  from { opacity: .55; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .lw-header-progress {
   position: absolute;
@@ -303,6 +364,7 @@
   .lw-menu-highlight,
   .lw-motion-header .product-menu-trigger::after,
   .lw-motion-header .product-dropdown,
+  .lw-motion-header .product-menu:is(:hover, :focus-within, .menu-open) .product-dropdown,
   .lw-motion-header .product-dropdown > a { transition: none; }
   .lw-motion-header .product-dropdown > a:is(:hover, :focus-visible) { translate: none; }
   .lw-motion-header,
