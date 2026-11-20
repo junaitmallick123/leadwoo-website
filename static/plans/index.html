@@ -29,12 +29,19 @@
         </div>
       </div>
       <div class="pricing-art" aria-hidden="true">
-        <div class="pricing-glass-stack">
-          <span class="pricing-glass-sheet pricing-glass-sheet--back"></span>
-          <span class="pricing-glass-sheet pricing-glass-sheet--middle"></span>
-          <span class="pricing-glass-sheet pricing-glass-sheet--front">
-            <img src="/leadwoo-website/assets/leadwoo-favicon.png" alt="" width="64" height="64">
-          </span>
+        <div class="pricing-monitor">
+          <svg viewBox="0 0 360 198" focusable="false">
+            <defs>
+              <pattern id="pricing-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+                <path d="M18 0H0V18" fill="none" stroke="#ffb582" stroke-opacity=".18"/>
+              </pattern>
+              <path id="pricing-wave" pathLength="100" d="M0 115H52Q61 115 67 105T83 115H103L112 128L126 66L138 147L151 115H192Q199 115 207 99T228 115H248L257 125L270 79L283 135L294 115H360"/>
+            </defs>
+            <rect width="360" height="198" fill="url(#pricing-grid)"/>
+            <g fill="#ffb786"><circle cx="19" cy="18" r="3"/><rect x="29" y="16" width="36" height="4" rx="2"/></g>
+            <use href="#pricing-wave" stroke="#cf8056" stroke-width="2" fill="none"/>
+            <use class="pricing-pulse" href="#pricing-wave" stroke="#ffdbab" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </svg>
         </div>
       </div>
     </div>
