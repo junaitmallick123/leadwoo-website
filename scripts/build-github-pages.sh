@@ -18,7 +18,7 @@ done
 # Normalize site-wide links and assets, then load the shared motion effects.
 while IFS= read -r -d '' page; do
   sed -E -i \
-    -e 's|href="https://www\.linkedin\.com/company/getleadwoo/"|href="https://www.linkedin.com/company/leadwoo/"|g' \
+    -e 's#href="https://www\.linkedin\.com/company/(getleadwoo|leadwoo)/"#href="https://www.linkedin.com/company/leadwoo-1/home/?viewAsMember=true"#g' \
     -e 's|<link rel="icon"[^>]*>||Ig; s|</head>|<link rel="icon" type="image/png" sizes="64x64" href="/leadwoo-website/assets/leadwoo-favicon.png"></head>|I' "$page"
   if grep -qi '<header[ >]' "$page" && grep -qi '<footer[ >]' "$page"; then
     sed -i "s|</head>|<link rel=\"stylesheet\" href=\"/leadwoo-website/assets/site-motion.${motion_hash}.css\"><script src=\"/leadwoo-website/assets/site-motion.${motion_hash}.js\" defer></script></head>|I" "$page"
