@@ -148,12 +148,6 @@
 
   const showcase = document.querySelector('[data-logo-showcase]');
   if (!showcase) return;
-  for (const track of showcase.querySelectorAll('.lw-logo-track')) {
-    const duplicate = track.querySelector('ul').cloneNode(true);
-    duplicate.classList.add('lw-logo-clone');
-    duplicate.setAttribute('aria-hidden', 'true');
-    track.append(duplicate);
-  }
 
   for (const rail of showcase.querySelectorAll('.lw-logo-rail')) {
     const logos = [...rail.querySelectorAll('li')];
