@@ -119,6 +119,39 @@
 }
 .geo-plans .plan-price small { display: block; }
 .geo-plans .btn { width: 100%; text-align: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .geo-plans .growth-plan {
+    transition: transform .24s ease-out, box-shadow .24s ease-out, border-color .24s ease-out;
+  }
+
+  .geo-plans .growth-plan:focus-within {
+    transform: translateY(-4px);
+    border-color: #c67953;
+    box-shadow: 0 18px 34px #83432228, inset 0 1px #fff;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .geo-plans .growth-plan:hover {
+      transform: perspective(900px) translateY(-6px) rotateX(2deg);
+      border-color: #c67953;
+      box-shadow: 0 18px 34px #83432228, inset 0 1px #fff;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .geo-plans .growth-plan {
+      animation: geo-card-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 32%;
+    }
+  }
+}
+
+@keyframes geo-card-rise {
+  from { translate: 0 12px; }
+  to { translate: 0 0; }
+}
+
 .geo-pricing-inclusions {
   margin-top: 24px;
   padding: clamp(18px, 3vw, 30px);
